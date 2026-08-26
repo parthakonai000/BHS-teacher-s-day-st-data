@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  
+  
+       <!-- Primary Meta Tags -->
+    <title>Bagore High School - Cultural Program</title>
+    <meta name="title" content="Bagore High School - Cultural Program">
+    <meta name="description" content="বাগোর হাই স্কুলের কালচারাল প্রোগ্রামের স্টুডেন্ট লিস্ট এবং পারফরম্যান্সের বিস্তারিত তথ্য।">
+    <meta name="keywords" content="Bagore High School, Cultural Program, School Event, Student List, Dance, Song, Drama">
+    <meta name="author" content="Parimal (P.K BOSS)">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parthakonai000.github.io/BHS-teacher-s-day-st-data/">
+    <meta property="og:title" content="Bagore High School - Cultural Program">
+    <meta property="og:description" content="বাগোর হাই স্কুলের কালচারাল প্রোগ্রামের স্টুডেন্ট লিস্ট এবং পারফরম্যান্সের বিস্তারিত তথ্য জানুন এখানে।">
+    <meta property="og:image" content="https://parthakonai000.github.io/BHS-teacher-s-day-st-data/logo.jpg">
+
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://parthakonai000.github.io/BHS-teacher-s-day-st-data/">
+    <meta property="twitter:title" content="Bagore High School - Cultural Program">
+    <meta property="twitter:description" content="বাগোর হাই স্কুলের কালচারাল প্রোগ্রামের স্টুডেন্ট লিস্ট এবং পারফরম্যান্সের বিস্তারিত তথ্য জানুন এখানে।">
+    <meta property="twitter:image" content="https://parthakonai000.github.io/BHS-teacher-s-day-st-data/logo.jpg">
+    
+    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bagore High School — Cultural Program</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root{
+    --maroon:#6b1032;
+    --maroon-dark:#3d0a1c;
+    --maroon-soft:#8a1c42;
+    --gold:#c9a227;
+    --gold-light:#ecd48a;
+    --cream:#f7ecd8;
+    --paper:#fffaf0;
+    --ink:#2a1810;
+    --muted:#8a7566;
+    --muted-light:#b7a58f;
+    --yt-red:#c8272c;
+    --yt-hover:#a51f23;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  body{
+    font-family:'Hind Siliguri', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+  }
+
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  /* ---------- Header / Marquee ---------- */
+  .hero-section{
+    position:relative;
+    background:
+      radial-gradient(ellipse at 50% -20%, rgba(236,212,138,0.35), transparent 60%),
+      linear-gradient(160deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+    color:var(--paper);
+    padding:56px 20px 40px;
+    text-align:center;
+    overflow:hidden;
+  }
+
+  .hero-section::before{
+    /* draped curtain scallops along the top edge */
+    content:"";
+    position:absolute;
+    top:-14px; left:0; right:0; height:34px;
+    background-image:radial-gradient(circle at 50% 0, var(--maroon-soft) 0 16px, transparent 17px);
+    background-size:44px 34px;
+    background-repeat:repeat-x;
+    opacity:0.6;
+  }
+
+  .header-content{ position:relative; z-index:1; }
+
+  .header-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(236,212,138,0.4);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+
+  .header-eyebrow i{ font-size:11px; }
+
+  .hero-section h1{
+    font-family:'Playfair Display', serif;
+    font-weight:800;
+    font-size:clamp(28px, 4vw, 40px);
+    letter-spacing:0.01em;
+    margin-bottom:10px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.25);
+  }
+
+  .hero-section h1 i{ color:var(--gold-light); margin-right:10px; }
+
+  .hero-section p.tagline{
+    font-size:17px;
+    color:var(--gold-light);
+    opacity:0.95;
+  }
+
+  /* marquee bulb strip */
+  .bulb-row{
+    height:14px;
+    margin-top:26px;
+    background-image:repeating-radial-gradient(circle at 10px 7px, var(--gold-light) 0 3px, transparent 4px 22px);
+    opacity:0.85;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .bulb-row{ animation:twinkle 2.4s ease-in-out infinite; }
+  }
+
+  @keyframes twinkle{
+    0%,100%{ opacity:0.55; }
+    50%{ opacity:0.95; }
+  }
+
+  /* ---------- Layout ---------- */
+  .container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:32px 20px 60px;
+  }
+
+  /* ---------- Controls: box office bar ---------- */
+  .controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-bottom:14px;
+    background:var(--paper);
+    padding:16px;
+    border-radius:14px;
+    border:1px solid rgba(107,16,50,0.12);
+    box-shadow:0 6px 20px rgba(61,10,28,0.06);
+  }
+
+  .search-box, .filter-box{
+    flex:1;
+    min-width:230px;
+    display:flex;
+    align-items:center;
+    background:var(--cream);
+    border:1px solid rgba(107,16,50,0.15);
+    border-radius:999px;
+    padding:0 16px;
+  }
+
+  .search-box i, .filter-box i{ color:var(--maroon); font-size:14px; }
+
+  .search-box input, .filter-box select{
+    width:100%;
+    border:none;
+    background:transparent;
+    padding:12px 10px;
+    font-family:inherit;
+    font-size:15px;
+    outline:none;
+    color:var(--ink);
+    appearance:none;
+  }
+
+  .filter-box select{ cursor:pointer; }
+
+  .result-count{
+    font-size:13px;
+    color:var(--muted);
+    margin:0 4px 24px;
+    letter-spacing:0.02em;
+  }
+
+  .result-count strong{ color:var(--maroon); }
+
+  /* ---------- Loader ---------- */
+  .loader-container{ text-align:center; padding:70px 0; }
+
+  .spinner{
+    width:42px; height:42px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    border:4px solid var(--gold-light);
+    border-top-color:var(--maroon);
+    animation:spin 0.9s linear infinite;
+  }
+
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .loader-container p{ color:var(--muted); font-size:15px; }
+
+  /* ---------- Error ---------- */
+  .error-message{
+    text-align:center;
+    color:var(--maroon-dark);
+    padding:26px 20px;
+    background:var(--paper);
+    border:1px dashed var(--yt-red);
+    border-radius:12px;
+    font-weight:500;
+  }
+
+  .error-message i{ font-size:22px; color:var(--yt-red); display:block; margin-bottom:10px; }
+
+  /* ---------- Empty state ---------- */
+  .empty-state{
+    grid-column:1/-1;
+    text-align:center;
+    padding:50px 20px;
+    color:var(--muted);
+  }
+
+  .empty-state i{ font-size:26px; color:var(--gold); margin-bottom:12px; display:block; }
+
+  .empty-state button{
+    margin-top:14px;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    color:var(--paper);
+    background:var(--maroon);
+    border:none;
+    padding:10px 20px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:background 0.2s ease;
+  }
+
+  .empty-state button:hover{ background:var(--maroon-soft); }
+
+  /* ---------- Cards grid ---------- */
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+    gap:22px;
+  }
+
+  .ticket-card{
+    position:relative;
+    background:var(--paper);
+    border-radius:14px;
+    box-shadow:0 8px 24px rgba(61,10,28,0.08);
+    overflow:visible;
+    opacity:0;
+    transform:translateY(10px);
+    animation:rise 0.45s ease forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ticket-card{ opacity:1; transform:none; animation:none; }
+  }
+
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+
+  .ticket-card:hover{ box-shadow:0 14px 30px rgba(61,10,28,0.14); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .ticket-card{ transition:box-shadow 0.25s ease, transform 0.25s ease; }
+    .ticket-card:hover{ transform:translateY(-4px); }
+  }
+
+  .ticket-main{ padding:20px 20px 16px; }
+
+  .ticket-eyebrow{
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+
+  .student-name{
+    font-family:'Playfair Display', serif;
+    font-size:20px;
+    font-weight:700;
+    color:var(--maroon-dark);
+    margin-bottom:6px;
+  }
+
+  .student-class{ font-size:14px; color:var(--muted); }
+  .student-class span{ font-weight:600; color:var(--ink); }
+
+  /* perforated divider with punch-hole notches */
+  .ticket-divider{
+    position:relative;
+    height:0;
+    border-top:2px dashed var(--gold-light);
+    margin:0 0;
+  }
+
+  .ticket-divider::before, .ticket-divider::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    width:20px; height:20px;
+    background:var(--cream);
+    border-radius:50%;
+    transform:translateY(-50%);
+  }
+
+  .ticket-divider::before{ left:-10px; }
+  .ticket-divider::after{ right:-10px; }
+
+  .ticket-stub{
+    padding:16px 20px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .activity-badge{
+    align-self:flex-start;
+    background:var(--maroon);
+    color:var(--gold-light);
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  /* YouTube button */
+  .yt-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    width:100%;
+    text-align:center;
+    background:var(--yt-red);
+    color:white;
+    text-decoration:none;
+    padding:11px 0;
+    border-radius:8px;
+    font-weight:600;
+    font-size:14px;
+    transition:background 0.2s ease;
+  }
+
+  .yt-btn:hover{ background:var(--yt-hover); }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    position:relative;
+    margin-top:20px;
+    background:
+      radial-gradient(ellipse at 50% 120%, rgba(236,212,138,0.25), transparent 60%),
+      linear-gradient(20deg, var(--maroon-dark) 0%, var(--maroon) 100%);
+    color:var(--paper);
+    padding:38px 20px 26px;
+    text-align:center;
+  }
+
+  .site-footer::before{
+    content:"";
+    position:absolute;
+    bottom:-14px; left:0; right:0; height:34px;
+    background-image:radial-gradient(circle at 50% 100%, var(--maroon-soft) 0 16px, transparent 17px);
+    background-size:44px 34px;
+    background-repeat:repeat-x;
+    opacity:0.5;
+  }
+
+  .footer-inner{ position:relative; z-index:1; max-width:420px; margin:0 auto; }
+
+  .footer-photo{
+    width:76px; height:76px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid var(--gold-light);
+    box-shadow:0 6px 18px rgba(0,0,0,0.3);
+    margin:0 auto 14px;
+    display:block;
+  }
+
+  .footer-name{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:18px;
+    color:var(--gold-light);
+    margin-bottom:4px;
+  }
+
+  .footer-tag{
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(250,243,230,0.65);
+    margin-bottom:18px;
+  }
+
+  .footer-socials{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    margin-bottom:18px;
+  }
+
+  .footer-socials a{
+    width:40px; height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(236,212,138,0.4);
+    color:var(--gold-light);
+    text-decoration:none;
+    font-size:16px;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+
+  .footer-socials a:hover{ background:var(--gold); color:var(--maroon-dark); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .footer-socials a:hover{ transform:translateY(-3px); }
+  }
+
+  .footer-copy{
+    font-size:12px;
+    color:rgba(250,243,230,0.55);
+  }
+
+  /* ---------- Utilities ---------- */
+  .hidden{ display:none !important; }
+  
+  
+    /* ---------- Hamburger Menu Styles ---------- */
+  .menu-btn { position:absolute; top:20px; left:20px; color:var(--gold-light); border:1px solid rgba(236,212,138,0.5); padding:8px 14px; border-radius:8px; font-size:20px; background:rgba(0,0,0,0.2); backdrop-filter:blur(5px); cursor:pointer; z-index:10; transition:0.3s; }
+  .menu-btn:hover { background:rgba(236,212,138,0.2); }
+  
+  .side-menu { position:fixed; top:0; left:-300px; width:280px; height:100vh; background:var(--paper); z-index:1000; box-shadow:4px 0 15px rgba(0,0,0,0.2); transition:left 0.3s ease; display:flex; flex-direction:column; }
+  .side-menu.active { left:0; }
+  
+  .menu-header { display:flex; justify-content:space-between; align-items:center; padding:25px 20px; background:var(--maroon); color:var(--gold-light); }
+  .menu-header h3 { font-family:'Playfair Display', serif; font-size:22px; margin:0; }
+  .close-btn { background:none; border:none; color:var(--gold-light); font-size:22px; cursor:pointer; transition:0.2s; }
+  .close-btn:hover { color:white; transform:rotate(90deg); }
+  
+  .menu-links { padding:20px 0; display:flex; flex-direction:column; gap:5px; }
+  .menu-links a { text-decoration:none; color:var(--maroon-dark); padding:14px 25px; font-size:16px; font-weight:600; display:flex; align-items:center; gap:12px; transition:0.2s; border-left:4px solid transparent; }
+  .menu-links a:hover { background:var(--cream); border-left:4px solid var(--gold); color:var(--maroon); }
+  .menu-links a i { width:20px; text-align:center; color:var(--muted); transition:0.2s; }
+  .menu-links a:hover i { color:var(--maroon); }
+  
+  .menu-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; display:none; opacity:0; transition:opacity 0.3s ease; backdrop-filter:blur(2px); }
+  .menu-overlay.active { display:block; opacity:1; }
+
+</style>
+</head>
+<body>
+
+  <header class="hero-section">
+       <!-- থ্রি-লাইন মেনু আইকন ও প্যানেল -->
+    <div class="menu-btn" id="menuBtn">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <div class="side-menu" id="sideMenu">
+      <div class="menu-header">
+        <h3>মেনু</h3>
+        <button class="close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
+      </div>
+      <nav class="menu-links">
+        <a href="index.html"><i class="fas fa-list"></i> স্টুডেন্ট লিস্ট</a>
+        <a href="fees.html"><i class="fas fa-chart-pie"></i> ফিজ ড্যাশবোর্ড</a>
+        <a href="submit/login.html".html"><i class="fas fa-plus-circle"></i> নতুন চাঁদা এন্ট্রি</a>
+      </nav>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <!-- মেনু শেষ -->
+
+
+    <div class="header-content">
+      <span class="header-eyebrow"><i class="fas fa-star"></i> সাংস্কৃতিক অনুষ্ঠান</span>
+      <h1><i class="fas fa-school"></i>Bagore High School</h1>
+      <p class="tagline">কালচারাল প্রোগ্রাম — স্টুডেন্ট লিস্ট</p>
+    </div>
+    <div class="bulb-row" aria-hidden="true"></div>
+  </header>
+
+  <main class="container">
+    <!-- Search and Filter Controls -->
+    <section class="controls">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="স্টুডেন্টের নাম দিয়ে খুঁজুন..." aria-label="স্টুডেন্টের নাম দিয়ে খুঁজুন">
+      </div>
+      <div class="filter-box">
+        <i class="fas fa-filter"></i>
+        <select id="activityFilter" aria-label="অ্যাক্টিভিটি বেছে নিন">
+          <option value="all">সব অ্যাক্টিভিটি</option>
+          <!-- JavaScript দিয়ে এখানে অপশন আসবে -->
+        </select>
+      </div>
+    </section>
+
+    <p class="result-count hidden" id="resultCount"></p>
+
+    <!-- Loading Spinner -->
+    <div id="loader" class="loader-container">
+      <div class="spinner"></div>
+      <p>ডেটা লোড হচ্ছে, দয়া করে অপেক্ষা করুন...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="error-message" class="error-message hidden">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p>ডেটা লোড করতে সমস্যা হয়েছে। দয়া করে পেজটি রিফ্রেশ করুন।</p>
+    </div>
+
+    <!-- Cards Container -->
+    <section id="cards-container" class="cards-grid hidden">
+      <!-- JavaScript দিয়ে এখানে কার্ডগুলো তৈরি হবে -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="myimage.jpg" alt="Parimal (P. K BOSS)" class="footer-photo">
+      <div class="footer-name">Parimal (P. K BOSS)</div>
+      <div class="footer-tag">Designed &amp; Developed by</div>
+      <div class="footer-socials">
+        <a href="https://wa.me/qr/ZHWDZ6RVBCO7A1" target="_blank" rel="noopener" aria-label="WhatsApp"><!-- WhatsApp লিংক এখানে বসান -->
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.instagram.com/itz_p.k_boss_?igsi=MXBzZXkybDkzcGp6NQ==" target="_blank" rel="noopener" aria-label="Instagram"><!-- Instagram লিংক এখানে বসান -->
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com/ParimalKonai" target="_blank" rel="noopener" aria-label="Twitter"><!-- Twitter/X লিংক এখানে বসান -->
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+      <p class="footer-copy">&copy; <span id="footerYear"></span> Bagore High School</p>
+    </div>
+  </footer>
+
+  <script>
+    // আপনার Web App URL এখানে বসান
+    const API_URL = 'https://script.google.com/macros/s/AKfycbwO7YT8Pclz2uhDkfCg3F8QsJ6mDVJkt3fenQxR0542gQ3mUNHFYh9aurTXQhQNsljNJQ/exec';
+
+    let allStudentsData = []; // সমস্ত ডেটা সেভ রাখার জন্য
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchData();
+
+      document.getElementById('searchInput').addEventListener('input', filterData);
+      document.getElementById('activityFilter').addEventListener('change', filterData);
+      document.getElementById('footerYear').textContent = new Date().getFullYear();
+    });
+
+    // API থেকে ডেটা আনার ফাংশন
+    async function fetchData() {
+      try {
+        const response = await fetch(API_URL);
+        const result = await response.json();
+
+        if (result.success && result.data) {
+          allStudentsData = result.data;
+
+          populateFilters(allStudentsData);
+          renderCards(allStudentsData);
+
+          document.getElementById('loader').classList.add('hidden');
+          document.getElementById('cards-container').classList.remove('hidden');
+          document.getElementById('resultCount').classList.remove('hidden');
+        } else {
+          showError();
+        }
+      } catch (error) {
+        console.error('Fetch Error:', error);
+        showError();
+      }
+    }
+
+    // ফিল্টার ড্রপডাউনে অ্যাক্টিভিটি অ্যাড করার ফাংশন
+    function populateFilters(data) {
+      const filterSelect = document.getElementById('activityFilter');
+      const activities = new Set();
+
+      data.forEach(student => {
+        if (student.Activity) {
+          activities.add(student.Activity.trim());
+        }
+      });
+
+      activities.forEach(activity => {
+        const option = document.createElement('option');
+        option.value = activity;
+        option.textContent = activity;
+        filterSelect.appendChild(option);
+      });
+    }
+
+    // কার্ড রেন্ডার করার ফাংশন
+    function renderCards(data) {
+      const container = document.getElementById('cards-container');
+      container.innerHTML = '';
+
+      updateResultCount(data.length);
+
+      if (data.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-ghost"></i>
+            <p>কোনো পারফরমার পাওয়া যায়নি।</p>
+            <button type="button" id="clearFiltersBtn">সব দেখুন</button>
+          </div>`;
+        document.getElementById('clearFiltersBtn').addEventListener('click', clearFilters);
+        return;
+      }
+
+      data.forEach((student, index) => {
+        const name = student.Name || 'অজানা নাম';
+        const className = student.Class || '-';
+        const activity = student.Activity || '-';
+        const ytLink = student.YouTube_Link || '#';
+
+        const card = document.createElement('div');
+        card.className = 'ticket-card';
+        card.style.animationDelay = `${Math.min(index * 0.04, 0.4)}s`;
+
+        card.innerHTML = `
+          <div class="ticket-main">
+            <div class="ticket-eyebrow">পারফরমার</div>
+            <div class="student-name">${name}</div>
+            <div class="student-class">ক্লাস <span>${className}</span></div>
+          </div>
+          <div class="ticket-divider"></div>
+          <div class="ticket-stub">
+            <div class="activity-badge">${activity}</div>
+            <a href="${ytLink}" target="_blank" class="yt-btn ${ytLink === '#' ? 'hidden' : ''}">
+              <i class="fab fa-youtube"></i> ইউটিউবে দেখুন
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function updateResultCount(count) {
+      const el = document.getElementById('resultCount');
+      el.innerHTML = `<strong>${count}</strong> জন পারফরমার পাওয়া গেছে`;
+    }
+
+    // সার্চ এবং ফিল্টার লজিক
+    function filterData() {
+      const searchText = document.getElementById('searchInput').value.toLowerCase();
+      const filterValue = document.getElementById('activityFilter').value;
+
+      const filteredData = allStudentsData.filter(student => {
+        const nameMatch = (student.Name || '').toLowerCase().includes(searchText);
+        const activityMatch = filterValue === 'all' || (student.Activity || '') === filterValue;
+
+        return nameMatch && activityMatch;
+      });
+
+      renderCards(filteredData);
+    }
+
+    function clearFilters() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('activityFilter').value = 'all';
+      renderCards(allStudentsData);
+    }
+
+    // এরর দেখানোর ফাংশন
+    function showError() {
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('error-message').classList.remove('hidden');
+    }
+    
+        // --- মেনু খোলার এবং বন্ধ করার লজিক ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeBtn');
+      const sideMenu = document.getElementById('sideMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      if(menuBtn && closeBtn && sideMenu && menuOverlay) {
+        function toggleMenu() {
+          sideMenu.classList.toggle('active');
+          if(sideMenu.classList.contains('active')) {
+            menuOverlay.style.display = 'block';
+            setTimeout(() => menuOverlay.classList.add('active'), 10);
+          } else {
+            menuOverlay.classList.remove('active');
+            setTimeout(() => menuOverlay.style.display = 'none', 300);
+          }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+      }
+    });
+
+  </script>
+</body>
+</html>
