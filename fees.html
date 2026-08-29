@@ -15,26 +15,55 @@
   
   /* Header Setup */
   .hero-section{ position:relative; background: radial-gradient(ellipse at 50% -20%, rgba(236,212,138,0.35), transparent 60%), linear-gradient(160deg, var(--maroon) 0%, var(--maroon-dark) 100%); color:var(--paper); padding:56px 20px 40px; text-align:center; overflow:hidden; }
-  .hero-section::before{ content:""; position:absolute; top:-14px; left:0; right:0; height:34px; background-image:radial-gradient(circle at 50% 0, var(--maroon-soft) 0 16px, transparent 17px); background-size:44px 34px; background-repeat:repeat-x; opacity:0.6; }
   .header-content{ position:relative; z-index:1; }
   .header-eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-light); background:rgba(255,255,255,0.08); border:1px solid rgba(236,212,138,0.4); padding:6px 14px; border-radius:999px; margin-bottom:16px; }
   .hero-section h1{ font-family:'Playfair Display', serif; font-weight:800; font-size:clamp(28px, 4vw, 40px); margin-bottom:10px; text-shadow:0 2px 12px rgba(0,0,0,0.25); }
   .hero-section p.tagline{ font-size:17px; color:var(--gold-light); opacity:0.95; }
   .container{ max-width:1100px; margin:0 auto; padding:32px 20px 60px; }
   
-  /* --------- Dashboard Section --------- */
-  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--maroon-dark); margin-bottom: 15px; border-bottom: 2px dashed var(--gold-light); padding-bottom: 5px; }
+  /* Menu Styles */
+  .menu-btn { position:absolute; top:20px; left:20px; color:var(--gold-light); border:1px solid rgba(236,212,138,0.5); padding:8px 14px; border-radius:8px; font-size:20px; background:rgba(0,0,0,0.2); backdrop-filter:blur(5px); cursor:pointer; z-index:10; transition:0.3s; }
+  .menu-btn:hover { background:rgba(236,212,138,0.2); }
+  .side-menu { position:fixed; top:0; left:-300px; width:280px; height:100vh; background:var(--paper); z-index:1000; box-shadow:4px 0 15px rgba(0,0,0,0.2); transition:left 0.3s ease; display:flex; flex-direction:column; }
+  .side-menu.active { left:0; }
+  .menu-header { display:flex; justify-content:space-between; align-items:center; padding:25px 20px; background:var(--maroon); color:var(--gold-light); }
+  .menu-header h3 { font-family:'Playfair Display', serif; font-size:22px; margin:0; }
+  .close-btn { background:none; border:none; color:var(--gold-light); font-size:22px; cursor:pointer; transition:0.2s; }
+  .close-btn:hover { color:white; transform:rotate(90deg); }
+  .menu-links { padding:20px 0; display:flex; flex-direction:column; gap:5px; }
+  .menu-links a { text-decoration:none; color:var(--maroon-dark); padding:14px 25px; font-size:16px; font-weight:600; display:flex; align-items:center; gap:12px; transition:0.2s; border-left:4px solid transparent; }
+  .menu-links a:hover { background:var(--cream); border-left:4px solid var(--gold); color:var(--maroon); }
+  .menu-links a i { width:20px; text-align:center; color:var(--muted); transition:0.2s; }
+  .menu-links a:hover i { color:var(--maroon); }
+  .menu-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; display:none; opacity:0; transition:opacity 0.3s ease; backdrop-filter:blur(2px); }
+  .menu-overlay.active { display:block; opacity:1; }
+
+  /* Dashboard Section */
+  .section-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--maroon-dark); margin: 25px 0 15px; border-bottom: 2px dashed var(--gold-light); padding-bottom: 5px; }
   .dashboard-wrapper { margin-bottom: 40px; }
   
   .total-card { background: linear-gradient(135deg, var(--maroon), var(--maroon-dark)); padding: 25px 20px; border-radius: 14px; box-shadow: 0 6px 20px rgba(61,10,28,0.15); text-align: center; color: var(--gold-light); margin-bottom: 20px; border: 1px solid rgba(236,212,138,0.3); }
   .total-card h4 { font-size: 18px; margin-bottom: 5px; color: rgba(255,255,255,0.8); }
   .total-card .amt { font-size: 36px; font-weight: 800; color: var(--paper); text-shadow: 0 2px 5px rgba(0,0,0,0.3); }
 
-  .class-wise-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+  /* Class-wise Grid */
+  .class-wise-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
   .class-card { background: var(--paper); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid rgba(107,16,50,0.1); box-shadow: 0 4px 10px rgba(0,0,0,0.04); transition: transform 0.2s; }
   .class-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.08); }
   .class-card h5 { font-size: 14px; color: var(--muted); margin-bottom: 5px; }
   .class-card .class-amt { font-size: 20px; font-weight: 700; color: var(--maroon); }
+
+  /* Date-wise Long List */
+  .date-wise-list { display: flex; flex-direction: column; gap: 12px; }
+  .date-card { background: var(--paper); border: 1px solid rgba(107,16,50,0.12); border-left: 5px solid var(--maroon); padding: 14px 20px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.03); transition: transform 0.2s ease; }
+  .date-card:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .date-info { display: flex; align-items: center; gap: 12px; }
+  .date-info i { color: var(--maroon); font-size: 18px; }
+  .date-label-main { font-weight: 700; font-size: 16px; color: var(--maroon-dark); }
+  .date-badge { font-size: 12px; padding: 2px 8px; border-radius: 12px; font-weight: 600; margin-left: 8px; }
+  .badge-today { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .badge-yesterday { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+  .date-amt { font-size: 18px; font-weight: 700; color: #166534; background: #f0fdf4; padding: 4px 12px; border-radius: 6px; border: 1px solid #dcfce7; }
 
   /* Controls */
   .controls{ display:flex; gap:14px; margin-bottom: 20px; background:var(--paper); padding:16px; border-radius:14px; border:1px solid rgba(107,16,50,0.12); box-shadow:0 6px 20px rgba(61,10,28,0.06); }
@@ -44,11 +73,12 @@
   
   /* Cards Grid */
   .cards-grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:22px; }
-  .ticket-card{ position:relative; background:var(--paper); border-radius:14px; box-shadow:0 8px 24px rgba(61,10,28,0.08); animation:rise 0.45s ease forwards; transition: transform 0.25s ease; }
+  .ticket-card{ position:relative; background:var(--paper); border-radius:14px; box-shadow:0 8px 24px rgba(61,10,28,0.08); transition: transform 0.25s ease; }
   .ticket-card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(61,10,28,0.14); }
   .ticket-main{ padding:20px 20px 16px; }
   .student-name{ font-family:'Playfair Display', serif; font-size:20px; font-weight:700; color:var(--maroon-dark); margin-bottom:6px; }
   .student-class{ font-size:14px; color:var(--muted); }
+  .student-date{ font-size:13px; color:var(--muted-light); margin-top:4px; }
   .ticket-divider{ position:relative; height:0; border-top:2px dashed var(--gold-light); }
   .ticket-stub{ padding:16px 20px; text-align: center; }
   .amount-badge{ display:inline-block; font-size: 22px; font-weight: bold; color: #166534; background: #dcfce7; padding: 5px 20px; border-radius: 8px; border: 1px solid #bbf7d0; }
@@ -60,45 +90,18 @@
   .hidden{ display:none !important; }
   
   /* Footer */
-  .site-footer{ position:relative; margin-top:20px; background: radial-gradient(ellipse at 50% 120%, rgba(236,212,138,0.25), transparent 60%), linear-gradient(20deg, var(--maroon-dark) 0%, var(--maroon) 100%); color:var(--paper); padding:38px 20px 26px; text-align:center; }
+  .site-footer{ position:relative; margin-top:40px; background: radial-gradient(ellipse at 50% 120%, rgba(236,212,138,0.25), transparent 60%), linear-gradient(20deg, var(--maroon-dark) 0%, var(--maroon) 100%); color:var(--paper); padding:38px 20px 26px; text-align:center; }
   .footer-inner{ max-width:420px; margin:0 auto; }
   .footer-photo{ width:76px; height:76px; border-radius:50%; object-fit:cover; border:3px solid var(--gold-light); box-shadow:0 6px 18px rgba(0,0,0,0.3); margin:0 auto 14px; display:block; }
   .footer-name{ font-family:'Playfair Display', serif; font-weight:700; font-size:18px; color:var(--gold-light); margin-bottom:4px; }
   .footer-tag{ font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(250,243,230,0.65); margin-bottom:18px; }
-  
-  
-    /* ---------- Hamburger Menu Styles ---------- */
-  .menu-btn { position:absolute; top:20px; left:20px; color:var(--gold-light); border:1px solid rgba(236,212,138,0.5); padding:8px 14px; border-radius:8px; font-size:20px; background:rgba(0,0,0,0.2); backdrop-filter:blur(5px); cursor:pointer; z-index:10; transition:0.3s; }
-  .menu-btn:hover { background:rgba(236,212,138,0.2); }
-  
-  .side-menu { position:fixed; top:0; left:-300px; width:280px; height:100vh; background:var(--paper); z-index:1000; box-shadow:4px 0 15px rgba(0,0,0,0.2); transition:left 0.3s ease; display:flex; flex-direction:column; }
-  .side-menu.active { left:0; }
-  
-  .menu-header { display:flex; justify-content:space-between; align-items:center; padding:25px 20px; background:var(--maroon); color:var(--gold-light); }
-  .menu-header h3 { font-family:'Playfair Display', serif; font-size:22px; margin:0; }
-  .close-btn { background:none; border:none; color:var(--gold-light); font-size:22px; cursor:pointer; transition:0.2s; }
-  .close-btn:hover { color:white; transform:rotate(90deg); }
-  
-  .menu-links { padding:20px 0; display:flex; flex-direction:column; gap:5px; }
-  .menu-links a { text-decoration:none; color:var(--maroon-dark); padding:14px 25px; font-size:16px; font-weight:600; display:flex; align-items:center; gap:12px; transition:0.2s; border-left:4px solid transparent; }
-  .menu-links a:hover { background:var(--cream); border-left:4px solid var(--gold); color:var(--maroon); }
-  .menu-links a i { width:20px; text-align:center; color:var(--muted); transition:0.2s; }
-  .menu-links a:hover i { color:var(--maroon); }
-  
-  .menu-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; display:none; opacity:0; transition:opacity 0.3s ease; backdrop-filter:blur(2px); }
-  .menu-overlay.active { display:block; opacity:1; }
-
 </style>
 </head>
 <body>
 
   <header class="hero-section">
-    <!-- থ্রি-লাইন মেনু আইকন -->
-    <div class="menu-btn" id="menuBtn">
-      <i class="fas fa-bars"></i>
-    </div>
-
-    <!-- সাইড মেনু প্যানেল -->
+    <!-- Menu Button & Drawer -->
+    <div class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></div>
     <div class="side-menu" id="sideMenu">
       <div class="menu-header">
         <h3>মেনু</h3>
@@ -110,13 +113,11 @@
         <a href="submit/login.html"><i class="fas fa-plus-circle"></i> নতুন চাঁদা এন্ট্রি</a>
       </nav>
     </div>
-    <!-- মেনুর পেছনের অন্ধকার ব্যাকগ্রাউন্ড -->
     <div class="menu-overlay" id="menuOverlay"></div>
-
 
     <div class="header-content">
       <span class="header-eyebrow"><i class="fas fa-wallet"></i> অনুদান ও ফিজ</span>
-      <h1><i class="fas fa-school"></i>Bagore High School</h1>
+      <h1><i class="fas fa-school"></i> Bagore High School</h1>
       <p class="tagline">স্টুডেন্টদের চাঁদা বা ফিজের হিসাব</p>
     </div>
   </header>
@@ -130,14 +131,17 @@
         <div class="amt">₹ <span id="totalAmount">0</span></div>
       </div>
       
-      <h2 class="section-title">ক্লাসভিত্তিক কালেকশন</h2>
-      <div id="classWiseContainer" class="class-wise-grid">
-        <!-- JavaScript দিয়ে এখানে ক্লাসভিত্তিক কার্ড আসবে -->
-      </div>
+      <!-- ক্লাসভিত্তিক কালেকশন -->
+      <h2 class="section-title"><i class="fas fa-layer-group"></i> ক্লাসভিত্তিক কালেকশন</h2>
+      <div id="classWiseContainer" class="class-wise-grid"></div>
+
+      <!-- তারিখভিত্তিক কালেকশন -->
+      <h2 class="section-title"><i class="fas fa-calendar-alt"></i> তারিখভিত্তিক কালেকশন</h2>
+      <div id="dateWiseContainer" class="date-wise-list"></div>
     </div>
 
     <!-- Search Controls -->
-    <h2 class="section-title" id="listTitle" class="hidden">স্টুডেন্ট লিস্ট</h2>
+    <h2 class="section-title hidden" id="listTitle"><i class="fas fa-users"></i> স্টুডেন্ট লিস্ট</h2>
     <section class="controls hidden" id="searchSection">
       <div class="search-box">
         <i class="fas fa-search"></i>
@@ -151,7 +155,7 @@
       <p>ডেটা লোড হচ্ছে, দয়া করে অপেক্ষা করুন...</p>
     </div>
 
-    <!-- Cards Container (স্টুডেন্টদের লিস্ট) -->
+    <!-- Cards Container -->
     <section id="cards-container" class="cards-grid hidden"></section>
   </main>
 
@@ -164,12 +168,31 @@
   </footer>
 
   <script>
-    // আপনার নতুন Web App URL বসান এবং শেষে '?type=fees' যুক্ত করুন
     const API_URL = 'https://script.google.com/macros/s/AKfycbwO7YT8Pclz2uhDkfCg3F8QsJ6mDVJkt3fenQxR0542gQ3mUNHFYh9aurTXQhQNsljNJQ/exec?type=fees';
 
     let allStudentsData = []; 
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Menu Toggle Logic
+      const menuBtn = document.getElementById('menuBtn');
+      const closeBtn = document.getElementById('closeBtn');
+      const sideMenu = document.getElementById('sideMenu');
+      const menuOverlay = document.getElementById('menuOverlay');
+
+      function toggleMenu() {
+        sideMenu.classList.toggle('active');
+        if(sideMenu.classList.contains('active')) {
+          menuOverlay.style.display = 'block';
+          setTimeout(() => menuOverlay.classList.add('active'), 10);
+        } else {
+          menuOverlay.classList.remove('active');
+          setTimeout(() => menuOverlay.style.display = 'none', 300);
+        }
+      }
+      menuBtn.addEventListener('click', toggleMenu);
+      closeBtn.addEventListener('click', toggleMenu);
+      menuOverlay.addEventListener('click', toggleMenu);
+
       fetchData();
       document.getElementById('searchInput').addEventListener('input', filterData);
     });
@@ -182,13 +205,12 @@
         if (result.success && result.data) {
           allStudentsData = result.data;
           
-          // ড্যাশবোর্ড এবং কার্ড রেন্ডার করা
           renderDashboard(allStudentsData);
           renderCards(allStudentsData);
           
-          // লোডার হাইড করা এবং কন্টেন্ট দেখানো
           document.getElementById('loader').classList.add('hidden');
           document.getElementById('dashboardSection').classList.remove('hidden');
+          document.getElementById('listTitle').classList.remove('hidden');
           document.getElementById('searchSection').classList.remove('hidden');
           document.getElementById('cards-container').classList.remove('hidden');
         }
@@ -197,32 +219,66 @@
       }
     }
 
-    // --- ড্যাশবোর্ড রেন্ডার করার ফাংশন ---
+    // Helper: তারিখ পার্স করা (DD-MM-YYYY বা সাধারণ ডেট স্ট্রিং)
+    function parseDateString(dateStr) {
+      if (!dateStr) return null;
+      if (typeof dateStr !== 'string') dateStr = String(dateStr);
+      
+      const parts = dateStr.split(/[-/]/);
+      if (parts.length === 3) {
+        // DD-MM-YYYY ফরম্যাট হ্যান্ডেল করা
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const year = parseInt(parts[2], 10);
+        return new Date(year, month, day);
+      }
+      const parsed = new Date(dateStr);
+      return isNaN(parsed) ? null : parsed;
+    }
+
+    function formatDateToKey(d) {
+      const day = String(d.getDate()).padStart(2, '0');
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const year = d.getFullYear();
+      return `${day}-${month}-${year}`;
+    }
+
     function renderDashboard(data) {
       let totalSum = 0;
       let classTotals = {};
+      let dateTotals = {};
 
-      // ডেটা প্রসেস করে মোট টাকা এবং ক্লাসভিত্তিক টাকা বের করা
+      const today = new Date();
+      const yesterday = new Date();
+      yesterday.setDate(today.getDate() - 1);
+
+      const todayStr = formatDateToKey(today);
+      const yesterdayStr = formatDateToKey(yesterday);
+
       data.forEach(student => {
         const amount = Number(student.Amount) || 0;
         const className = (student.Class || 'অজানা').toString().trim();
         
         totalSum += amount;
         
-        if (!classTotals[className]) {
-          classTotals[className] = 0;
+        // Class Calculation
+        classTotals[className] = (classTotals[className] || 0) + amount;
+
+        // Date Calculation (গুগল শিটের 'Date' কলাম থেকে)
+        const rawDate = student.Date || student.date;
+        if (rawDate) {
+          const parsed = parseDateString(rawDate);
+          const key = parsed ? formatDateToKey(parsed) : String(rawDate).trim();
+          dateTotals[key] = (dateTotals[key] || 0) + amount;
         }
-        classTotals[className] += amount;
       });
 
-      // সর্বমোট টাকা আপডেট করা (toLocaleString দিয়ে কমা বসানো হয়েছে)
+      // সর্বমোট
       document.getElementById('totalAmount').innerText = totalSum.toLocaleString('en-IN');
 
-      // ক্লাসভিত্তিক কার্ড তৈরি করা
+      // Class Cards Render
       const classContainer = document.getElementById('classWiseContainer');
       classContainer.innerHTML = '';
-
-      // ক্লাসগুলোকে সাজানো (যাতে ক্লাস 5, 6, 7 পরপর থাকে)
       const sortedClasses = Object.keys(classTotals).sort((a, b) => {
         const numA = parseInt(a.replace(/\D/g, ''));
         const numB = parseInt(b.replace(/\D/g, ''));
@@ -231,17 +287,53 @@
       });
 
       sortedClasses.forEach(className => {
-        const classCard = document.createElement('div');
-        classCard.className = 'class-card';
-        classCard.innerHTML = `
+        const card = document.createElement('div');
+        card.className = 'class-card';
+        card.innerHTML = `
           <h5>ক্লাস ${className}</h5>
           <div class="class-amt">₹ ${classTotals[className].toLocaleString('en-IN')}</div>
         `;
-        classContainer.appendChild(classCard);
+        classContainer.appendChild(card);
       });
+
+      // Date List Render (সাম্প্রতিক তারিখগুলো উপরে দেখাবে)
+      const dateContainer = document.getElementById('dateWiseContainer');
+      dateContainer.innerHTML = '';
+
+      const sortedDates = Object.keys(dateTotals).sort((a, b) => {
+        const da = parseDateString(a) || new Date(0);
+        const db = parseDateString(b) || new Date(0);
+        return db - da; // Descending (নতুন তারিখ উপরে)
+      });
+
+      if (sortedDates.length === 0) {
+        dateContainer.innerHTML = '<p style="color:var(--muted); font-size:14px;">কোনো তারিখের ডেটা পাওয়া যায়নি।</p>';
+      } else {
+        sortedDates.forEach(dateKey => {
+          let badgeHTML = '';
+          if (dateKey === todayStr) {
+            badgeHTML = '<span class="date-badge badge-today">আজ</span>';
+          } else if (dateKey === yesterdayStr) {
+            badgeHTML = '<span class="date-badge badge-yesterday">গতকাল</span>';
+          }
+
+          const card = document.createElement('div');
+          card.className = 'date-card';
+          card.innerHTML = `
+            <div class="date-info">
+              <i class="far fa-calendar-check"></i>
+              <div>
+                <span class="date-label-main">${dateKey}</span>
+                ${badgeHTML}
+              </div>
+            </div>
+            <div class="date-amt">₹ ${dateTotals[dateKey].toLocaleString('en-IN')}</div>
+          `;
+          dateContainer.appendChild(card);
+        });
+      }
     }
 
-    // --- স্টুডেন্ট লিস্ট রেন্ডার করার ফাংশন ---
     function renderCards(data) {
       const container = document.getElementById('cards-container');
       container.innerHTML = '';
@@ -250,14 +342,15 @@
         const name = student.Name || 'অজানা নাম';
         const className = student.Class || '-';
         const amount = Number(student.Amount) || 0;
+        const rawDate = student.Date || student.date || '';
 
         const card = document.createElement('div');
         card.className = 'ticket-card';
-
         card.innerHTML = `
           <div class="ticket-main">
             <div class="student-name">${name}</div>
-            <div class="student-class">ক্লাস <span>${className}</span></div>
+            <div class="student-class">ক্লাস: <span>${className}</span></div>
+            ${rawDate ? `<div class="student-date"><i class="far fa-clock"></i> ${rawDate}</div>` : ''}
           </div>
           <div class="ticket-divider"></div>
           <div class="ticket-stub">
@@ -268,41 +361,13 @@
       });
     }
 
-    // --- সার্চ ফিল্টার ---
     function filterData() {
       const searchText = document.getElementById('searchInput').value.toLowerCase();
       const filteredData = allStudentsData.filter(student => 
         (student.Name || '').toLowerCase().includes(searchText)
       );
-      // সার্চ করলে শুধুমাত্র নিচের কার্ডগুলো আপডেট হবে, ড্যাশবোর্ডে টোটাল অ্যামাউন্ট একই থাকবে
       renderCards(filteredData);
     }
-    
-        // --- মেনু খোলার এবং বন্ধ করার লজিক ---
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuBtn = document.getElementById('menuBtn');
-      const closeBtn = document.getElementById('closeBtn');
-      const sideMenu = document.getElementById('sideMenu');
-      const menuOverlay = document.getElementById('menuOverlay');
-
-      if(menuBtn && closeBtn && sideMenu && menuOverlay) {
-        function toggleMenu() {
-          sideMenu.classList.toggle('active');
-          if(sideMenu.classList.contains('active')) {
-            menuOverlay.style.display = 'block';
-            setTimeout(() => menuOverlay.classList.add('active'), 10);
-          } else {
-            menuOverlay.classList.remove('active');
-            setTimeout(() => menuOverlay.style.display = 'none', 300);
-          }
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
-        menuOverlay.addEventListener('click', toggleMenu);
-      }
-    });
-
   </script>
 </body>
 </html>
