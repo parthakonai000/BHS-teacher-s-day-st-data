@@ -168,206 +168,241 @@
   </footer>
 
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbwO7YT8Pclz2uhDkfCg3F8QsJ6mDVJkt3fenQxR0542gQ3mUNHFYh9aurTXQhQNsljNJQ/exec?type=fees';
+  const API_URL = 'https://script.google.com/macros/s/AKfycbwO7YT8Pclz2uhDkfCg3F8QsJ6mDVJkt3fenQxR0542gQ3mUNHFYh9aurTXQhQNsljNJQ/exec?type=fees';
 
-    let allStudentsData = []; 
+  let allStudentsData = []; 
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // Menu Toggle Logic
-      const menuBtn = document.getElementById('menuBtn');
-      const closeBtn = document.getElementById('closeBtn');
-      const sideMenu = document.getElementById('sideMenu');
-      const menuOverlay = document.getElementById('menuOverlay');
+  document.addEventListener('DOMContentLoaded', () => {
+    // Menu Toggle Logic
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-      function toggleMenu() {
-        sideMenu.classList.toggle('active');
-        if(sideMenu.classList.contains('active')) {
-          menuOverlay.style.display = 'block';
-          setTimeout(() => menuOverlay.classList.add('active'), 10);
-        } else {
-          menuOverlay.classList.remove('active');
-          setTimeout(() => menuOverlay.style.display = 'none', 300);
-        }
-      }
-      menuBtn.addEventListener('click', toggleMenu);
-      closeBtn.addEventListener('click', toggleMenu);
-      menuOverlay.addEventListener('click', toggleMenu);
-
-      fetchData();
-      document.getElementById('searchInput').addEventListener('input', filterData);
-    });
-
-    async function fetchData() {
-      try {
-        const response = await fetch(API_URL);
-        const result = await response.json();
-
-        if (result.success && result.data) {
-          allStudentsData = result.data;
-          
-          renderDashboard(allStudentsData);
-          renderCards(allStudentsData);
-          
-          document.getElementById('loader').classList.add('hidden');
-          document.getElementById('dashboardSection').classList.remove('hidden');
-          document.getElementById('listTitle').classList.remove('hidden');
-          document.getElementById('searchSection').classList.remove('hidden');
-          document.getElementById('cards-container').classList.remove('hidden');
-        }
-      } catch (error) {
-        console.error('Fetch Error:', error);
+    function toggleMenu() {
+      sideMenu.classList.toggle('active');
+      if(sideMenu.classList.contains('active')) {
+        menuOverlay.style.display = 'block';
+        setTimeout(() => menuOverlay.classList.add('active'), 10);
+      } else {
+        menuOverlay.classList.remove('active');
+        setTimeout(() => menuOverlay.style.display = 'none', 300);
       }
     }
+    menuBtn.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
 
-    // Helper: তারিখ পার্স করা (DD-MM-YYYY বা সাধারণ ডেট স্ট্রিং)
-    function parseDateString(dateStr) {
-      if (!dateStr) return null;
-      if (typeof dateStr !== 'string') dateStr = String(dateStr);
-      
-      const parts = dateStr.split(/[-/]/);
+    fetchData();
+    document.getElementById('searchInput').addEventListener('input', filterData);
+  });
+
+  async function fetchData() {
+    try {
+      const response = await fetch(API_URL);
+      const result = await response.json();
+
+      if (result.success && result.data) {
+        allStudentsData = result.data;
+        
+        renderDashboard(allStudentsData);
+        renderCards(allStudentsData);
+        
+        document.getElementById('loader').classList.add('hidden');
+        document.getElementById('dashboardSection').classList.remove('hidden');
+        document.getElementById('listTitle').classList.remove('hidden');
+        document.getElementById('searchSection').classList.remove('hidden');
+        document.getElementById('cards-container').classList.remove('hidden');
+      }
+    } catch (error) {
+      console.error('Fetch Error:', error);
+    }
+  }
+
+  // ISO টাইমস্ট্যাম্প বা যেকোনো ফরম্যাটকে পরিষ্কার DD-MM-YYYY টেক্সটে রূপান্তর
+  function formatToCleanDate(dateVal) {
+    if (!dateVal) return '';
+
+    // যদি গুগল শিট থেকে ISO ফরম্যাটে আসে (যেমন: 2026-01-09T... বা 2026-09-01T...)
+    if (typeof dateVal === 'string' && dateVal.includes('T')) {
+      const datePart = dateVal.split('T')[0]; // "2026-01-09"
+      const parts = datePart.split('-');
       if (parts.length === 3) {
-        // DD-MM-YYYY ফরম্যাট হ্যান্ডেল করা
-        const day = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10) - 1;
-        const year = parseInt(parts[2], 10);
-        return new Date(year, month, day);
+        return `${parts[2]}-${parts[1]}-${parts[0]}`; // DD-MM-YYYY
       }
-      const parsed = new Date(dateStr);
-      return isNaN(parsed) ? null : parsed;
     }
 
-    function formatDateToKey(d) {
-      const day = String(d.getDate()).padStart(2, '0');
-      const month = String(d.getMonth() + 1).padStart(2, '0');
-      const year = d.getFullYear();
+    const str = String(dateVal).trim();
+    const parts = str.split(/[-/]/);
+
+    if (parts.length === 3) {
+      let day, month, year;
+      if (parts[0].length === 4) {
+        // YYYY-MM-DD
+        year = parts[0];
+        month = parts[1].padStart(2, '0');
+        day = parts[2].padStart(2, '0');
+      } else {
+        // DD-MM-YYYY
+        day = parts[0].padStart(2, '0');
+        month = parts[1].padStart(2, '0');
+        year = parts[2];
+      }
       return `${day}-${month}-${year}`;
     }
 
-    function renderDashboard(data) {
-      let totalSum = 0;
-      let classTotals = {};
-      let dateTotals = {};
+    return str;
+  }
 
-      const today = new Date();
-      const yesterday = new Date();
-      yesterday.setDate(today.getDate() - 1);
+  // তারিখের সঠিক Date অবজেক্ট তৈরি করা (ড্যাশবোর্ড সর্টিংয়ের জন্য)
+  function parseDateString(dateVal) {
+    const cleanStr = formatToCleanDate(dateVal);
+    if (!cleanStr) return null;
 
-      const todayStr = formatDateToKey(today);
-      const yesterdayStr = formatDateToKey(yesterday);
-
-      data.forEach(student => {
-        const amount = Number(student.Amount) || 0;
-        const className = (student.Class || 'অজানা').toString().trim();
-        
-        totalSum += amount;
-        
-        // Class Calculation
-        classTotals[className] = (classTotals[className] || 0) + amount;
-
-        // Date Calculation (গুগল শিটের 'Date' কলাম থেকে)
-        const rawDate = student.Date || student.date;
-        if (rawDate) {
-          const parsed = parseDateString(rawDate);
-          const key = parsed ? formatDateToKey(parsed) : String(rawDate).trim();
-          dateTotals[key] = (dateTotals[key] || 0) + amount;
-        }
-      });
-
-      // সর্বমোট
-      document.getElementById('totalAmount').innerText = totalSum.toLocaleString('en-IN');
-
-      // Class Cards Render
-      const classContainer = document.getElementById('classWiseContainer');
-      classContainer.innerHTML = '';
-      const sortedClasses = Object.keys(classTotals).sort((a, b) => {
-        const numA = parseInt(a.replace(/\D/g, ''));
-        const numB = parseInt(b.replace(/\D/g, ''));
-        if(!isNaN(numA) && !isNaN(numB)) return numA - numB;
-        return a.localeCompare(b);
-      });
-
-      sortedClasses.forEach(className => {
-        const card = document.createElement('div');
-        card.className = 'class-card';
-        card.innerHTML = `
-          <h5>ক্লাস ${className}</h5>
-          <div class="class-amt">₹ ${classTotals[className].toLocaleString('en-IN')}</div>
-        `;
-        classContainer.appendChild(card);
-      });
-
-      // Date List Render (সাম্প্রতিক তারিখগুলো উপরে দেখাবে)
-      const dateContainer = document.getElementById('dateWiseContainer');
-      dateContainer.innerHTML = '';
-
-      const sortedDates = Object.keys(dateTotals).sort((a, b) => {
-        const da = parseDateString(a) || new Date(0);
-        const db = parseDateString(b) || new Date(0);
-        return db - da; // Descending (নতুন তারিখ উপরে)
-      });
-
-      if (sortedDates.length === 0) {
-        dateContainer.innerHTML = '<p style="color:var(--muted); font-size:14px;">কোনো তারিখের ডেটা পাওয়া যায়নি।</p>';
-      } else {
-        sortedDates.forEach(dateKey => {
-          let badgeHTML = '';
-          if (dateKey === todayStr) {
-            badgeHTML = '<span class="date-badge badge-today">আজ</span>';
-          } else if (dateKey === yesterdayStr) {
-            badgeHTML = '<span class="date-badge badge-yesterday">গতকাল</span>';
-          }
-
-          const card = document.createElement('div');
-          card.className = 'date-card';
-          card.innerHTML = `
-            <div class="date-info">
-              <i class="far fa-calendar-check"></i>
-              <div>
-                <span class="date-label-main">${dateKey}</span>
-                ${badgeHTML}
-              </div>
-            </div>
-            <div class="date-amt">₹ ${dateTotals[dateKey].toLocaleString('en-IN')}</div>
-          `;
-          dateContainer.appendChild(card);
-        });
-      }
+    const parts = cleanStr.split('-');
+    if (parts.length === 3) {
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1;
+      const year = parseInt(parts[2], 10);
+      return new Date(year, month, day);
     }
+    return null;
+  }
 
-    function renderCards(data) {
-      const container = document.getElementById('cards-container');
-      container.innerHTML = '';
+  function formatDateToKey(d) {
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  function renderDashboard(data) {
+    let totalSum = 0;
+    let classTotals = {};
+    let dateTotals = {};
+
+    const today = new Date();
+    const yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+
+    const todayStr = formatDateToKey(today);
+    const yesterdayStr = formatDateToKey(yesterday);
+
+    data.forEach(student => {
+      const amount = Number(student.Amount) || 0;
+      const className = (student.Class || 'অজানা').toString().trim();
       
-      data.forEach((student) => {
-        const name = student.Name || 'অজানা নাম';
-        const className = student.Class || '-';
-        const amount = Number(student.Amount) || 0;
-        const rawDate = student.Date || student.date || '';
+      totalSum += amount;
+      
+      // Class Calculation
+      classTotals[className] = (classTotals[className] || 0) + amount;
+
+      // Date Calculation
+      const rawDate = student.Date || student.date;
+      if (rawDate) {
+        const cleanKey = formatToCleanDate(rawDate);
+        if (cleanKey) {
+          dateTotals[cleanKey] = (dateTotals[cleanKey] || 0) + amount;
+        }
+      }
+    });
+
+    // সর্বমোট
+    document.getElementById('totalAmount').innerText = totalSum.toLocaleString('en-IN');
+
+    // Class Cards Render
+    const classContainer = document.getElementById('classWiseContainer');
+    classContainer.innerHTML = '';
+    const sortedClasses = Object.keys(classTotals).sort((a, b) => {
+      const numA = parseInt(a.replace(/\D/g, ''));
+      const numB = parseInt(b.replace(/\D/g, ''));
+      if(!isNaN(numA) && !isNaN(numB)) return numA - numB;
+      return a.localeCompare(b);
+    });
+
+    sortedClasses.forEach(className => {
+      const card = document.createElement('div');
+      card.className = 'class-card';
+      card.innerHTML = `
+        <h5>ক্লাস ${className}</h5>
+        <div class="class-amt">₹ ${classTotals[className].toLocaleString('en-IN')}</div>
+      `;
+      classContainer.appendChild(card);
+    });
+
+    // Date List Render (সর্বশেষ তারিখ সবার উপরে)
+    const dateContainer = document.getElementById('dateWiseContainer');
+    dateContainer.innerHTML = '';
+
+    const sortedDates = Object.keys(dateTotals).sort((a, b) => {
+      const da = parseDateString(a) || new Date(0);
+      const db = parseDateString(b) || new Date(0);
+      return db - da; 
+    });
+
+    if (sortedDates.length === 0) {
+      dateContainer.innerHTML = '<p style="color:var(--muted); font-size:14px;">কোনো তারিখের ডেটা পাওয়া যায়নি।</p>';
+    } else {
+      sortedDates.forEach(dateKey => {
+        let badgeHTML = '';
+        if (dateKey === todayStr) {
+          badgeHTML = '<span class="date-badge badge-today">আজ</span>';
+        } else if (dateKey === yesterdayStr) {
+          badgeHTML = '<span class="date-badge badge-yesterday">গতকাল</span>';
+        }
 
         const card = document.createElement('div');
-        card.className = 'ticket-card';
+        card.className = 'date-card';
         card.innerHTML = `
-          <div class="ticket-main">
-            <div class="student-name">${name}</div>
-            <div class="student-class">ক্লাস: <span>${className}</span></div>
-            ${rawDate ? `<div class="student-date"><i class="far fa-clock"></i> ${rawDate}</div>` : ''}
+          <div class="date-info">
+            <i class="far fa-calendar-check"></i>
+            <div>
+              <span class="date-label-main">${dateKey}</span>
+              ${badgeHTML}
+            </div>
           </div>
-          <div class="ticket-divider"></div>
-          <div class="ticket-stub">
-            <div class="amount-badge">₹ ${amount.toLocaleString('en-IN')}</div>
-          </div>
+          <div class="date-amt">₹ ${dateTotals[dateKey].toLocaleString('en-IN')}</div>
         `;
-        container.appendChild(card);
+        dateContainer.appendChild(card);
       });
     }
+  }
 
-    function filterData() {
-      const searchText = document.getElementById('searchInput').value.toLowerCase();
-      const filteredData = allStudentsData.filter(student => 
-        (student.Name || '').toLowerCase().includes(searchText)
-      );
-      renderCards(filteredData);
-    }
-  </script>
+  function renderCards(data) {
+    const container = document.getElementById('cards-container');
+    container.innerHTML = '';
+    
+    data.forEach((student) => {
+      const name = student.Name || 'অজানা নাম';
+      const className = student.Class || '-';
+      const amount = Number(student.Amount) || 0;
+      const rawDate = student.Date || student.date || '';
+
+      const card = document.createElement('div');
+      card.className = 'ticket-card';
+      card.innerHTML = `
+        <div class="ticket-main">
+          <div class="student-name">${name}</div>
+          <div class="student-class">ক্লাস: <span>${className}</span></div>
+          ${rawDate ? `<div class="student-date"><i class="far fa-clock"></i> ${formatToCleanDate(rawDate)}</div>` : ''}
+        </div>
+        <div class="ticket-divider"></div>
+        <div class="ticket-stub">
+          <div class="amount-badge">₹ ${amount.toLocaleString('en-IN')}</div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function filterData() {
+    const searchText = document.getElementById('searchInput').value.toLowerCase();
+    const filteredData = allStudentsData.filter(student => 
+      (student.Name || '').toLowerCase().includes(searchText)
+    );
+    renderCards(filteredData);
+  }
+</script>
+
 </body>
 </html>
