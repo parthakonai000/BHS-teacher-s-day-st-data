@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bagore High School — নোটিশ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --maroon: #6b1032;
+      --maroon-dark: #3d0a1c;
+      --gold: #c9a227;
+      --gold-light: #ecd48a;
+      --cream: #f7ecd8;
+      --paper: #fffaf0;
+      --ink: #2a1810;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Hind Siliguri', sans-serif;
+      background: radial-gradient(ellipse at 50% -20%, rgba(236,212,138,0.2), transparent 70%), linear-gradient(145deg, var(--maroon-dark) 0%, #1e050e 100%);
+      color: var(--paper);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .closed-card {
+      background: rgba(255, 250, 240, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(236, 212, 138, 0.3);
+      padding: 45px 30px;
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    /* অ্যানিমেটেড আইকন */
+    .icon-wrapper {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(201, 162, 39, 0.15);
+      border: 2px solid var(--gold);
+      animation: pulseGlow 2.5s infinite ease-in-out;
+    }
+
+    .icon-wrapper i {
+      font-size: 40px;
+      color: var(--gold-light);
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.5);
+      }
+      50% {
+        transform: scale(1.06);
+        box-shadow: 0 0 25px 8px rgba(201, 162, 39, 0.25);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(201, 162, 39, 0);
+      }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      background: rgba(200, 39, 44, 0.25);
+      border: 1px solid #ff4d4f;
+      color: #ff7875;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    p.main-msg {
+      font-size: 17px;
+      color: var(--cream);
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(236, 212, 138, 0.3), transparent);
+      margin: 20px 0;
+    }
+
+    .thanks-note {
+      font-size: 14px;
+      color: rgba(255, 250, 240, 0.65);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="closed-card">
+    <div class="icon-wrapper">
+      <i class="fas fa-lock"></i>
+    </div>
+    
+    <span class="status-badge"><i class="fas fa-circle-notch fa-spin"></i> পোর্টাল বন্ধ আছে</span>
+    
+    <h1>Bagore High School</h1>
+    <p class="main-msg">
+      টিচার্স ডে কালেকশন এবং এন্ট্রি প্রক্রিয়া সফলভাবে সম্পন্ন হয়েছে। এই ওয়েবসাইটের সমস্ত কার্যক্রম আনুষ্ঠানিকভাবে বন্ধ করা হলো।
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="thanks-note">
+      সকলের আন্তরিক সহযোগিতা এবং স্বতঃস্ফূর্ত অংশগ্রহণের জন্য ধন্যবাদ।
+    </p>
+  </div>
+
+</body>
+</html>
+
